@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/register.css">
+    <title>register</title>
+</head>
+
+<body class="register" >
+<header>
+
+</header>
+
+<main>
+
+    <% if(locals.persona){ %>
+        <p>
+            Hola ​<%=persona.name%> ​, elegiste el color:<%=persona.theme%>​, tu email es: 
+<%=persona.email%>  ​y tu edad es: <%=persona.age%> 
+        </p>
+   <%  }else { %> 
+
+    <form action="/register" method="POST">
+
+
+        <label for="name">Nombre :</label>
+        <input type="text" name="name" value="<%= typeof old != "undefined" ? old.name : "" %>">
+        <%if( locals.errors && locals.errors.name){%>
+            <p style="color: red; font-size: 15px;"><%=errors.name.msg%></p>
+        <%}%>
+
+        <label for="name">Color de fondo :</label>
+        <select class="theme" name="theme" >
+            <option selected hidden value="">color</option>
+            <option value="green">Verde</option>
+            <option value="red">Rojo</option>
+            <option value="blue">Azul</option>
+        </select>
+        <%if( locals.errors && locals.errors.theme){%>
+            <p style="color: red; font-size: 15px;"><%=errors.theme.msg%></p>
+        <%}%>
+
+        <label for="email">Ingrese su email :</label>
+        <input type="text" name="email">
+        <%if( locals.errors && locals.errors.email){%>
+            <p style="color: red; font-size: 15px;"><%=errors.email.msg%></p>
+        <%}%>
+
+        <label for="age">Ingrese su edad :</label>
+        <input type="text" name="age">
+        <%if( locals.errors && locals.errors.age){%>
+            <p style="color: red; font-size: 15px;"><%=errors.age.msg%></p>
+        <%}%>
+
+        <button type="submit">Enviar</button>
+
+   </form>
+   <% } %> 
+</main>
+</body>
+</html>

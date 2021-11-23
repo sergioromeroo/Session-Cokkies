@@ -1,0 +1,12 @@
+.register main form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: baseline;
+    width: 15vw;
+}
+
+.register main form input,select{
+    margin: 2px 0 15px 0;
+    width: 100%;
+}
